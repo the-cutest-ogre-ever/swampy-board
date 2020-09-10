@@ -10,13 +10,14 @@
     <input type="text" name="tag" placeholder="Enter your tag">
     <button type="submit">Submit</button>
 </form>
+<form method="post" action="filter">
+    <input type="text" name="filter">
+    <button type="submit">Search</button>
+</form>
 <p>It's a start page</p>
 <table>
-    <tr>
-        <th>TEXT</th>
-        <th>TAG</th>
-    </tr>
     <tr th:each="message: ${messages}">
+        <td th:text="${message.id}"></td>
         <td th:text="${message.text}"></td>
         <td th:text="${message.tag}"></td>
     </tr>
