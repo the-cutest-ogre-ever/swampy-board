@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>e
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 <form method="post">
     <input type="text" name="text" placeholder="Enter your text">
     <input type="text" name="tag" placeholder="Enter your tag">
@@ -14,7 +18,7 @@
     <input type="text" name="filter">
     <button type="submit">Search</button>
 </form>
-<p>It's a start page</p>
+<p>It's not a start page</p>
 <table>
     <tr th:each="message: ${messages}">
         <td th:text="${message.id}"></td>
