@@ -1,4 +1,8 @@
 package ru.board.swampy.repositories;
 
-public interface UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import ru.board.swampy.entities.User;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
 }
