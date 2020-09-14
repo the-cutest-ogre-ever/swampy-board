@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.board.swampy.entities.Role;
 import ru.board.swampy.entities.User;
 import ru.board.swampy.repositories.UserRepository;
 
@@ -30,7 +31,8 @@ public class RegistrationController {
         }
 
         user.setActive(true);
-        user.setRoles(Collections.singleton());
+        user.setRoles(Collections.singleton(Role.USER));
+        userRepository.save(user);
 
         return "redirect:/login";
     }
