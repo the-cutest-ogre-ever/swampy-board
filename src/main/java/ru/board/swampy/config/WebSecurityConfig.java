@@ -36,8 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery("SELECT username, password, active FROM user_table WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT user_table.username, user_role_table.roles FROM user_table INNER JOIN user_role_table ON user_table.id = user_role_table.user_id WHERE username=?");
+                .usersByUsernameQuery("SELECT userName, password, active FROM usr WHERE userName=?")
+                .authoritiesByUsernameQuery("SELECT u.userName, ur.roles FROM usr u INNER JOIN user_role ur ON u.id = ur.user_id WHERE userName=?");
 
     }
 }
