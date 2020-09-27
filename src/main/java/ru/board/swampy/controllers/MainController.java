@@ -3,7 +3,6 @@ package ru.board.swampy.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +10,6 @@ import ru.board.swampy.entities.Message;
 import ru.board.swampy.entities.User;
 import ru.board.swampy.repositories.MessageRepository;
 
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -39,7 +37,7 @@ public class MainController {
             @RequestParam String text,
             @RequestParam String tag,
             Map<String, Object> model) {
-        Message message = new Message(text, tag);
+        Message message = new Message(text, tag, user);
 
         messageRepository.save(message);
         Iterable<Message> messages = messageRepository.findAll();
